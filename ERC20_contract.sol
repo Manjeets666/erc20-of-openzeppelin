@@ -1,21 +1,7 @@
 pragma solidity ^0.5.0;
 // ERC Token Standard #20 Interface
 
-contract ERC20Interface {
-    function totalSupply() public view returns (uint);
-    function balanceOf(address tokenOwner) public view returns (uint balance);
-    function allowance(address tokenOwner, address spender) public view returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-    function mint(address tokenOwner, uint mintedTokens) public;
-    function burn(address account, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-}
-
-contract Token is ERC20Interface {
+contract Token  {
     string public name;
     address public owner; 
     string public symbol;
@@ -25,6 +11,9 @@ contract Token is ERC20Interface {
 
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
+    
+    event Transfer(address indexed from, address indexed to, uint tokens);
+    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 
     // Initializes contract with initial supply tokens to the creator of the contract.
     
